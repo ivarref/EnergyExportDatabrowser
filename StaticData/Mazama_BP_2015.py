@@ -272,10 +272,12 @@ def main():
                       "BP_2015_nuclear_consumption_mtoe",
                       "BP_2015_hydro_consumption_twh",
                       "BP_2015_hydro_consumption_mtoe",
-                      "BP_2015_renewables_consumption_mtoe",
                       "BP_2015_renewables_consumption_twh",
+                      "BP_2015_renewables_consumption_mtoe",
                       "BP_2015_solar_consumption_twh",
-                      "BP_2015_wind_consumption_twh", # 40
+                      "BP_2015_solar_consumption_mtoe",
+                      "BP_2015_wind_consumption_twh",
+                      "BP_2015_wind_consumption_mtoe",
                       "Other consumption - Twh",
                       "Biofuels Production - barrels ",
                       "Biofuels Production - Ktoe",
@@ -298,7 +300,7 @@ def main():
                     33,34, # Nuclear Consumption
                     35,36, # Nuclear Consumption
                     37,38, # Other renewables
-                    39,40, # Solar & Wind
+                    39,40,41,42 # Solar & Wind
                     ]
     
     for sheet_index in sheet_indices:
