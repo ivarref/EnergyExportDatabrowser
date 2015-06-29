@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Mazama_BP_2012.py
+Mazama_BP_2015.py
 
 A script to convert the British Petroleum Statistical Review Excel workbook into
 a series of standardized ASCII CSV files for ingest by other software.
@@ -13,7 +13,7 @@ import sys
 from openpyxl import load_workbook
 from Mazama_Countries import CountryTranslator
 
-RELEASE_YEAR = 2012
+RELEASE_YEAR = 2015
 CSV_START_YEAR = 1965
 
 
@@ -26,7 +26,7 @@ def get_data_dictionary(sheet,rowrange,colrange):
 
     result = {}
 
-    ct = CountryTranslator('BP_2012')
+    ct = CountryTranslator('BP_2015')
       
     # NOTE:  The following notes follow  
     ignore_me = ["",
@@ -38,10 +38,28 @@ def get_data_dictionary(sheet,rowrange,colrange):
                  u"Excludes Former Soviet Union.",
                  u"# Excludes Estonia, Latvia and Lithuania prior to 1985 and Slovenia prior to 1991.",
                  u"Notes: Annual changes and shares of total are calculated using million tonnes per annum figures.",
+                 u"* Includes crude oil, tight oil, oil sands and NGLs (the liquid content of natural gas where this is recovered separately). Excludes liquid fuels from other sources such as biomass and derivatives of coal and natural gas.",
+                 u"coal and natural gas.",
+                 u"n/a not available.",
+                 u"Note: Annual changes and shares of total are calculated using million tonnes per annum figures.",
                  #
                  u"Oil: Consumption *",
                  u"* Includes crude oil, shale oil, oil sands and NGLs (the liquid content of natural gas where this is recovered separately).",
                  u"* Inland demand plus international aviation and marine bunkers and refinery fuel and loss.  Consumption of fuel ethanol and biodiesel is also included.",
+                 u"* Includes crude oil, tight oil, oil sands and NGLs (the liquid content of natural gas where this is recovered separately). Excludes liquid fuels from other sources such as biomass and derivatives of",
+                 u"* Inland demand plus international aviation and marine bunkers and refinery fuel and loss. Consumption of biogasoline (such as ethanol), biodiesel and derivatives of coal and natural gas are also included.",
+                 u"Notes: Differences between these world consumption figures and world production statistics are accounted for by stock changes, consumption of non-petroleum additives",
+                 u"* Excludes gas flared or recycled. Includes natural gas produced for Gas-to-Liquids transformation.",
+                 u"Notes:  As far as possible, the data above represent standard cubic metres (measured at 15ºC and 1013 mbar); as they are derived directly from tonnes of oil equivalent using an average conversion factor,",
+                 u"Notes: Annual changes and shares of total are calculated using million tonnes of oil equivalent figures.",
+                 u"Notes: As the data above are derived from tonnes oil equivalent using average conversion factors, they do not necessarily equate with gas volumes expressed in specific national terms.",
+                 u"Annual changes and shares of total are calculated using million tonnes of oil equivalent figures.",
+                 u"*Excludes gas flared or recycled. Includes natural gas produced for Gas-to-Liquids transformation.",
+                 u"Natural Gas: Consumption*",
+                 u"* Excludes natural gas converted to liquid fuels but includes derivatives of coal as well as natural gas consumed in Gas-to-Liquids transformation.",
+                 u"Notes: As far as possible, the data above represent standard cubic metres (measured at 15oC and 1013 mbar); as they are derived directly from tonnes",
+                 u"Notes: The difference between these world consumption figures and the world production statistics is due to variations in stocks at storage facilities",
+                 u"* Commercial solid fuels only, i.e. bituminous coal and anthracite (hard coal), and lignite and brown (sub-bituminous) coal, and other solid commercial solid fuels. Includes coal produced for Coal-to-Liquids and Coal-to-Gas transformations.",
                  u"^ Less than 0.5.",
                  u"Notes:  Annual changes and shares of total are calculated using million tonnes per annum figures.",
                  u"Differences between these world consumption figures and world production statistics are accounted for by stock changes, consumption of non-petroleum additives",
@@ -51,6 +69,20 @@ def get_data_dictionary(sheet,rowrange,colrange):
                  u"Natural Gas: Production *",
                  u"* Excluding gas flared or recyled.",
                  u"Notes:  As far as possible, the data above represent standard cubic metres measured at 15oC and 1013 millibar (mbar); as they are derived directly from tonnes",
+u"Note: Annual changes and shares of total are calculated using million tonnes of oil equivalent figures.",
+                 u"* Commercial solid fuels only, i.e. bituminous coal and anthracite (hard coal), and lignite and brown (sub-bituminous) coal and other commercial solid fuels. Includes coal produced for Coal-to-Liquids and Coal-to-Gas transformations.",
+                 u"* Commercial solid fuels only, i.e. bituminous coal and anthracite (hard coal), and lignite and brown (sub-bituminous) coal. Excludes coal converted to liquid or gaseous fuels, but includes coal consumed in transformation processes.",
+                 u"""Note:  Differences between these world consumption figures and the world production statistics are accounted for by stock changes, and unavoidable disparities in the definition, measurement
+or conversion of coal supply and demand data.""",
+                 u"Note: Annual changes and shares of total are calculated using million tonnes of oil equivalent figures.",
+                 u"* Based on gross generation and not accounting for cross-border electricity supply. Converted on the basis of thermal equivalence assuming 38% conversion efficiency in a modern thermal power station.",
+                 u"Note: Annual changes and shares of total are calculated using million tonnes of oil equivalent figures.",
+                 u"Renewables: Consumption *",
+                 u"* Based on gross generation from renewable sources including wind,geothermal,solar,biomass and waste, and not accounting for cross-border electricity supply.",
+                 u"Renewables: Consumption *",
+                 u"* Based on gross generation from renewable sources including wind,geothermal,solar,biomass and waste, and not accounting for cross-border electricity supply.",
+                 u"* Based on gross generation and not accounting for cross-border electricity supply. Converted on the",
+                 u"basis of thermal equivalence assuming 38% conversion efficiency in a modern thermal power station.",
                  u"of oil equivalent using an average conversion factor, they do not necessarily equate with gas volumes expressed in specific national terms.",
                  u"Notes: Annual changes and shares of total are calculated in million tonnes of oil equilevent figures.",
                  u"As the data above are derived from tonnes oil equivalent using average conversion factors,",
@@ -96,7 +128,7 @@ def get_data_dictionary(sheet,rowrange,colrange):
                  ]
 
     for r in rowrange:
-        BP_country_code = sheet.cell(row=r,column=0).value
+        BP_country_code = sheet.cell(row=r,column=1+0).value
         if BP_country_code == None:
             continue
         # NOTE:  Remove pound sterling sign (u'\xa3') from 'Non-OPEC'
@@ -191,8 +223,7 @@ def write_data_as_csv(filename, Data, rowrange, rounding, data_start_year=1965):
 #
 def main():
 
-    # NOTE:  The original 2012 BP file was called 'statistical_review_of_world_energy_full_report_2012.xlsx'
-    stat_review = 'BP_2012.xlsx'
+    stat_review = 'BP_2015.xlsx'
 
     print("Loading %s ..." % (stat_review))
 
@@ -207,10 +238,10 @@ def main():
     csv_file_names = ["Contents", #0
                       "Oil - proved reserves",
                       "Oil - proved reserves history",
-                      "BP_2012_oil_production_bbl",
-                      "BP_2012_oil_production_mtoe",
-                      "BP_2012_oil_consumption_bbl",
-                      "BP_2012_oil_consumption_mtoe",
+                      "BP_2015_oil_production_bbl",
+                      "BP_2015_oil_production_mtoe",
+                      "BP_2015_oil_consumption_bbl",
+                      "BP_2015_oil_consumption_mtoe",
                       "Oil - Regional consumption ",
                       "Oil –  Spot crude prices",
                       "Oil - crude prices since 1861",
@@ -222,29 +253,29 @@ def main():
                       "Oil - Imports and exports",
                       "Gas – Proved reserves",
                       "Gas - Proved reserves history ",
-                      "BP_2012_gas_production_m3",
-                      "BP_2012_gas_production_ft3",
-                      "BP_2012_gas_production_mtoe", # 20
-                      "BP_2012_gas_consumption_m3",
-                      "BP_2012_gas_consumption_ft3",
-                      "BP_2012_gas_consumption_mtoe",
+                      "BP_2015_gas_production_m3",
+                      "BP_2015_gas_production_ft3",
+                      "BP_2015_gas_production_mtoe", # 20
+                      "BP_2015_gas_consumption_m3",
+                      "BP_2015_gas_consumption_ft3",
+                      "BP_2015_gas_consumption_mtoe",
                       "Gas - Trade - pipeline",
                       "Gas – Trade movements LNG",
                       "Gas - Trade 2010-2011",
                       "Gas - Prices ",
                       "Coal - Reserves",
                       "Coal - Prices",
-                      "BP_2012_coal_production_ton", # 30
-                      "BP_2012_coal_production_mtoe",
-                      "BP_2012_coal_consumption_mtoe",
-                      "BP_2012_nuclear_consumption_twh",
-                      "BP_2012_nuclear_consumption_mtoe",
-                      "BP_2012_hydro_consumption_twh",
-                      "BP_2012_hydro_consumption_mtoe",
-                      "BP_2012_renewables_consumption_mtoe",
-                      "BP_2012_renewables_consumption_twh",
-                      "BP_2012_solar_consumption_twh",
-                      "BP_2012_wind_consumption_twh ", # 40
+                      "BP_2015_coal_production_ton", # 30
+                      "BP_2015_coal_production_mtoe",
+                      "BP_2015_coal_consumption_mtoe",
+                      "BP_2015_nuclear_consumption_twh",
+                      "BP_2015_nuclear_consumption_mtoe",
+                      "BP_2015_hydro_consumption_twh",
+                      "BP_2015_hydro_consumption_mtoe",
+                      "BP_2015_renewables_consumption_mtoe",
+                      "BP_2015_renewables_consumption_twh",
+                      "BP_2015_solar_consumption_twh",
+                      "BP_2015_wind_consumption_twh", # 40
                       "Other consumption - Twh",
                       "Biofuels Production - barrels ",
                       "Biofuels Production - Ktoe",
@@ -275,22 +306,24 @@ def main():
         sheet = workbook.worksheets[sheet_index]
         
         # Access and clean up title and units
-        title = sheet.cell(row=0,column=0).value.replace('*','').rstrip()
-        units = sheet.cell(row=2,column=0).value.lower()
-        
+        title = sheet.cell(row=1+0,column=1+0).value.replace('*','').rstrip()
+        units = sheet.cell(row=1+2,column=1+0).value.lower()
+
         # Determine rows and columns to read
-        data_start_year = sheet.cell(row=2,column=1).value
+        data_start_year = sheet.cell(row=1+2,column=1+1).value
         col_hi = RELEASE_YEAR - data_start_year + 1
-        colrange = range(1,col_hi)    
-        rowrange = range(0,100) # Rowrange is larger than needed and rows that don't have country names will be skipped
-        
-        print("Converting %s (%s) Worksheet" % (title,units))
+        colrange = range(1+1,col_hi+1)
+        rowrange = range(1,100) # Rowrange is larger than needed and rows that don't have country names will be skipped
         
         file_name = csv_file_names[sheet_index] + ".csv"
+
+        print ("Converting %s (%s) " % (title,units )).ljust(75),
+        print "=> %s" % (file_name)
+        
         file = open(file_name,'w')
-        file.write("title         = ASCII CSV version of worksheet %d, \"%s\" from the 2012 British Petroleum Statistical Review\n" % (sheet_index+1, title))
-        file.write("file URL      = http://mazamascience.com/Data/Energy/BP/2012/%s\n" % (file_name))
-        file.write("original data = http://www.bp.com/assets/bp_internet/globalbp/globalbp_uk_english/reports_and_publications/statistical_energy_review_2012/STAGING/local_assets/spreadsheets/statistical_review_of_world_energy_full_report_2012.xlsx\n")
+        file.write("title         = ASCII CSV version of worksheet %d, \"%s\" from the 2015 British Petroleum Statistical Review\n" % (sheet_index+1, title))
+        file.write("file URL      = http://mazamascience.com/Data/Energy/BP/2015/%s\n" % (file_name))
+        file.write("original data = http://www.bp.com/content/dam/bp/excel/Energy-Economics/statistical-review-2015/bp-statistical-review-of-world-energy-2015-workbook.xlsx\n")
         file.write("country codes = ISO3166-1 two-letter codes or 'BP_~~~' for non-standard BP groupings (e.g. BP_TNA = Total North America)\n")
         file.write("units         = %s\n" % (units))
         file.write("\n")

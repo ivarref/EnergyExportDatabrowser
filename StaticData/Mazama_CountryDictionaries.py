@@ -218,6 +218,7 @@ English_to_ISO = {
     "SPAIN" : "ES",
     "SRI LANKA" : "LK",
     "SUDAN" : "SD",
+    "SOUTH SUDAN" : "SS",
     "SURINAME" : "SR",
     "SVALBARD AND JAN MAYEN" : "SJ",
     "SWAZILAND" : "SZ",

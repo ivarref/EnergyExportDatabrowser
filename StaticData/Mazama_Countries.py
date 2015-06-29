@@ -11,7 +11,7 @@ from Mazama_CountryDictionaries import *
 class CountryTranslationError(Exception): pass
 
 class CountryTranslator:
-    dialects = ['BP_2011','BP_2012']
+    dialects = ['BP_2011','BP_2012', 'BP_2015']
 
     def __init__(self,dialect='BP_2012'):
         if dialect in self.dialects:
@@ -37,7 +37,7 @@ class CountryTranslator:
         except:
             # Catch any exceptions and test those against other acceptable names, depending on the dialect.
             try:
-                if self.dialect == 'BP_2011' or self.dialect == 'BP_2012':
+                if self.dialect == 'BP_2011' or self.dialect == 'BP_2015':
                     code = BP_to_MZM[up_country]
             except:
                 # Regions that are still unrecognized
