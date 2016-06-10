@@ -278,6 +278,7 @@ BP_to_MZM = {
     "TOTAL MIDDLE EAST" : "BP_TME",
     "REP. OF CONGO (BRAZZAVILLE)" : "CG",
     "REPUBLIC OF CONGO (BRAZZAVILLE)" : "CG",
+    "REPUBLIC OF CONGO" : "CG",
     "LIBYA" : "LY",
     "OTHER AFRICA" : "BP_OAF",
     "TOTAL AFRICA" : "BP_TAF",
@@ -294,6 +295,7 @@ BP_to_MZM = {
     "OPEC 10" : "BP_OPEC10",
     "NON-OPEC" : "BP_NONOPEC",
     "FORMER SOVIET UNION" : "BP_FSU",
+    "USSR" : "BP_FSU",
     # Regions first encountered on the oil consumption worksheet
     "BELGIUM & LUXEMBOURG" : "BP_BELU",
     "REPUBLIC OF IRELAND" : "IE",
@@ -305,6 +307,7 @@ BP_to_MZM = {
     "BILLION CUBIC FEET PER DAY" : "YEAR",
     "MILLION TONNES OIL EQUIVALENT" : "YEAR",
     # Regions first encountered on the gas consumption worksheet
+    "BILLION CUBIC FEET" : "YEAR",
     # Regions first encountered on the oil (mtoe) worksheet
     "MILLION TONNES" : "YEAR",
     # Regions first encountered on the gas production (bcm) worksheet
