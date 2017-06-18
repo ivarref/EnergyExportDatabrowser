@@ -159,7 +159,7 @@ def main():
         #'Oil - Inter-area movements ',
         #'Oil - Trade 2015 - 2016',
         #'Gas - Proved reserves',
-        #'Gas - Proved reserves history ',
+        'Gas - Proved reserves history ' : 'BP_2017_gas_history_trillion_cubic_metres',
         'Gas Production - Bcm' : "BP_2017_gas_production_m3",
         'Gas Production - Bcf' : "BP_2017_gas_production_ft3",
         'Gas Production - Mtoe' : "BP_2017_gas_production_mtoe",
