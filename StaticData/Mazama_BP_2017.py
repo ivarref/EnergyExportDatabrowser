@@ -20,25 +20,17 @@ import collections
 RELEASE_YEAR = 2017
 CSV_START_YEAR = 1965
 
-
-########################################
-# get_data_dictionary
-# 
 # Returns a data dictionary filled with the contents of a BP Stat Review data sheet.
-
 def get_data_dictionary(sheet,rowrange,colrange):
-
     result = {}
 
     ct = CountryTranslator('BP_2015')
-    # NOTE:  The following notes follow
-
     import ignore_me as ign_me
     ignore_me = ign_me.ignore_me
 
     for r in rowrange:
         BP_country_code = sheet.cell(row=r,column=1+0).value
-        if r == 2:
+        if r == 3:
             BP_country_code = 'YEAR'
         
         if BP_country_code == None:
@@ -51,6 +43,7 @@ def get_data_dictionary(sheet,rowrange,colrange):
         try:
             MZM_code = ct.get_MZM_code(BP_country_code)
             ###print("DEBUG: MZM_code = '%s'" % (MZM_code))
+            # print "%s => %s" % (BP_country_code, MZM_code) 
             result[MZM_code] = []
             
             for c in colrange:
@@ -58,7 +51,7 @@ def get_data_dictionary(sheet,rowrange,colrange):
                 data_type = sheet.cell(row=r,column=c).data_type
                 
                 if data_type == 'n':
-                    if r == 2:
+                    if r == 3:
                         result["YEAR"].append(value)
                     else:
                         result[MZM_code].append(value)
@@ -152,10 +145,10 @@ def main():
         #'Primary Energy - Cons by fuel',
         #'Oil - Proved reserves',
         'Oil - Proved reserves history' : 'BP_2017_oil_history_gb',
-        'Oil Production - Barrels' : "BP_2017_oil_production_bbl",
-        'Oil Production - Tonnes' : "BP_2017_oil_production_mtoe",
-        'Oil Consumption -  Barrels': "BP_2017_oil_consumption_bbl",
-        'Oil Consumption - Tonnes': "BP_2017_oil_consumption_mtoe",
+        # 'Oil Production - Barrels' : "BP_2017_oil_production_bbl",
+        # 'Oil Production - Tonnes' : "BP_2017_oil_production_mtoe",
+        # 'Oil Consumption -  Barrels': "BP_2017_oil_consumption_bbl",
+        # 'Oil Consumption - Tonnes': "BP_2017_oil_consumption_mtoe",
         #'Oil - Regional Consumption ',
         #'Oil - Spot crude prices',
         #'Oil - Crude prices since 1861',
@@ -167,37 +160,37 @@ def main():
         #'Oil - Trade 2015 - 2016',
         #'Gas - Proved reserves',
         #'Gas - Proved reserves history ',
-        'Gas Production - Bcm' : "BP_2017_gas_production_m3",
-        'Gas Production - Bcf' : "BP_2017_gas_production_ft3",
-        'Gas Production - Mtoe' : "BP_2017_gas_production_mtoe",
-        'Gas Consumption - Bcm' : "BP_2017_gas_consumption_m3",
-        'Gas Consumption - Bcf' : "BP_2017_gas_consumption_ft3",
-        'Gas Consumption - Mtoe' : "BP_2017_gas_consumption_mtoe",
+        # 'Gas Production - Bcm' : "BP_2017_gas_production_m3",
+        # 'Gas Production - Bcf' : "BP_2017_gas_production_ft3",
+        # 'Gas Production - Mtoe' : "BP_2017_gas_production_mtoe",
+        # 'Gas Consumption - Bcm' : "BP_2017_gas_consumption_m3",
+        # 'Gas Consumption - Bcf' : "BP_2017_gas_consumption_ft3",
+        # 'Gas Consumption - Mtoe' : "BP_2017_gas_consumption_mtoe",
         # 'Gas - Trade - pipeline',
         # 'Gas - Trade movements LNG',
         # 'Gas - Trade 2015-2016',
         # 'Gas - Prices ',
         # 'Coal - Reserves',
         # 'Coal - Prices',
-        'Coal Production - Tonnes' : "BP_2017_coal_production_ton",
-        'Coal Production - Mtoe' : "BP_2017_coal_production_mtoe",
-        'Coal Consumption -  Mtoe' : "BP_2017_coal_consumption_mtoe",
-        'Nuclear Consumption - TWh' : "BP_2017_nuclear_consumption_twh",
-        'Nuclear Consumption - Mtoe' : "BP_2017_nuclear_consumption_mtoe",
-        'Hydro Consumption - TWh' : "BP_2017_hydro_consumption_twh",
-        'Hydro Consumption - Mtoe': "BP_2017_hydro_consumption_mtoe",
-        'Other renewables -TWh' : "BP_2017_renewables_consumption_twh",
-        'Other renewables - Mtoe' : "BP_2017_renewables_consumption_mtoe",
-        'Solar Consumption - TWh' : "BP_2017_solar_consumption_twh",
-        'Solar Consumption - Mtoe': "BP_2017_solar_consumption_mtoe",
-        'Wind Consumption - TWh ': "BP_2017_wind_consumption_twh",
-        'Wind Consumption - Mtoe': "BP_2017_wind_consumption_mtoe",
+        # 'Coal Production - Tonnes' : "BP_2017_coal_production_ton",
+        # 'Coal Production - Mtoe' : "BP_2017_coal_production_mtoe",
+        # 'Coal Consumption -  Mtoe' : "BP_2017_coal_consumption_mtoe",
+        # 'Nuclear Consumption - TWh' : "BP_2017_nuclear_consumption_twh",
+        # 'Nuclear Consumption - Mtoe' : "BP_2017_nuclear_consumption_mtoe",
+        # 'Hydro Consumption - TWh' : "BP_2017_hydro_consumption_twh",
+        # 'Hydro Consumption - Mtoe': "BP_2017_hydro_consumption_mtoe",
+        # 'Other renewables -TWh' : "BP_2017_renewables_consumption_twh",
+        # 'Other renewables - Mtoe' : "BP_2017_renewables_consumption_mtoe",
+        # 'Solar Consumption - TWh' : "BP_2017_solar_consumption_twh",
+        # 'Solar Consumption - Mtoe': "BP_2017_solar_consumption_mtoe",
+        # 'Wind Consumption - TWh ': "BP_2017_wind_consumption_twh",
+        # 'Wind Consumption - Mtoe': "BP_2017_wind_consumption_mtoe",
         # 'Geo Biomass Other - TWh',
         # 'Geo Biomass Other - Mtoe',
         # 'Biofuels Production - Kboed',
         # 'Biofuels Production - Ktoe',
         # 'Electricity Generation ',
-        'Carbon Dioxide Emissions' : 'BP_2017_co2_emissions',
+        # 'Carbon Dioxide Emissions' : 'BP_2017_co2_emissions',
         # 'Geothermal capacity',
         # 'Solar capacity',
         # 'Wind capacity',
