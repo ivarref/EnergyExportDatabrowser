@@ -190,7 +190,7 @@ def main():
         # 'Biofuels Production - Kboed',
         # 'Biofuels Production - Ktoe',
         # 'Electricity Generation ',
-        'Carbon Dioxide Emissions' : 'BP_2017_co2_emissions',
+        'Carbon Dioxide Emissions' : 'BP_2017_co2_emissions_mt',
         # 'Geothermal capacity',
         # 'Solar capacity',
         # 'Wind capacity',
