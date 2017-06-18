@@ -185,7 +185,7 @@ def main():
         'Solar Consumption - Mtoe': "BP_2017_solar_consumption_mtoe",
         'Wind Consumption - TWh ': "BP_2017_wind_consumption_twh",
         'Wind Consumption - Mtoe': "BP_2017_wind_consumption_mtoe",
-        # 'Geo Biomass Other - TWh',
+        #'Geo Biomass Other - TWh' : "BP_2017_geo_biomass_other_twh",
         # 'Geo Biomass Other - Mtoe',
         # 'Biofuels Production - Kboed',
         # 'Biofuels Production - Ktoe',
@@ -202,7 +202,8 @@ def main():
     title_to_worksheet = dict([(sheet.title, sheet) for sheet in workbook.worksheets])
     for title in title_to_filename.keys():
         if title in title_to_worksheet:
-            print "%s => OK" % (title)
+            #print "%s => OK" % (title)
+            pass
         else:
             pprint.pprint([sheet.title for sheet in workbook.worksheets])
             print "missing worksheet %s" % title
@@ -216,20 +217,20 @@ def main():
         sheet = title_to_worksheet[title]
         sheet_title = sheet.cell(row=1+0,column=1+0).value.replace('*','').rstrip()
         title = sheet.cell(row=1+0,column=1+0).value.replace('*','').rstrip()
-        print "title => %s => %s" % (title, sheet_title)
+        #print "title => %s => %s" % (title, sheet_title)
         units = sheet.cell(row=1+2,column=1+0).value.lower()
 
         # Determine rows and columns to read
         data_start_year = sheet.cell(row=1+2,column=1+1).value
-        print "data_start_year = %s" % (str(data_start_year))
+        #print "data_start_year = %s" % (str(data_start_year))
         col_hi = RELEASE_YEAR - data_start_year + 1
         colrange = range(1+1,col_hi+1)
         rowrange = range(1,100) # Rowrange is larger than needed and rows that don't have country names will be skipped
 
-        print ("Converting %s (%s)" % (title,units)).ljust(85),
+        #print ("Converting %s (%s)" % (title,units)).ljust(85),
         # file_name = file_name.replace("_2017_", "_")
         # file_name = file_name.replace("_renewables_", "_other_renewables_")
-        print "=> %s ..." % (file_name)
+        #print "=> %s ..." % (file_name)
         file = open("./" + file_name,'w')
         file.write("title         = ASCII CSV version of worksheet \"%s\" from the 2017 British Petroleum Statistical Review\n" % (title))
         file.write("file URL      = http://mazamascience.com/Data/Energy/BP/2017/%s\n" % (file_name))
@@ -240,6 +241,10 @@ def main():
         Data = get_data_dictionary(sheet,rowrange,colrange)
         rowrange = range(0,col_hi-1)
         rounding = 3
+        write_data_as_csv(file,Data,rowrange,rounding,data_start_year)
+        file.close()
+
+        file = open('./' + str(RELEASE_YEAR) + '/' + file_name, 'w')
         write_data_as_csv(file,Data,rowrange,rounding,data_start_year)
         file.close()
 
