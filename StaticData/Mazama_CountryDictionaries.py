@@ -265,6 +265,7 @@ English_to_ISO = {
 BP_to_MZM = {
     # Regions first encountered on oil the production worksheet
     "THOUSAND BARRELS DAILY" : "YEAR",
+    "YEAR": "YEAR",
     "US" : "US",
     "TOTAL NORTH AMERICA" : "BP_TNA",
     "TRINIDAD & TOBAGO" : "TT",

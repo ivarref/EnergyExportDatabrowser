@@ -32,130 +32,15 @@ def get_data_dictionary(sheet,rowrange,colrange):
 
     ct = CountryTranslator('BP_2015')
     # NOTE:  The following notes follow
-    ignore_me = ["",
-                 u"Oil: Production *",
-                 u"* Includes crude oil, shale oil, oil sands and NGLs ( the liquid content of natural gas where this is recovered separately).",
-                 u"Excludes liquid fuels from other sources such as biomass and coal derivatives.",
-                 u"^ Less than 0.05.",
-                 u"w Less than 0.05%.",
-                 u"Excludes Former Soviet Union.",
-                 u"# Excludes Estonia, Latvia and Lithuania prior to 1985 and Slovenia prior to 1991.",
-                 u"Notes: Annual changes and shares of total are calculated using million tonnes per annum figures.",
-                 u"* Includes crude oil, tight oil, oil sands and NGLs (the liquid content of natural gas where this is recovered separately). Excludes liquid fuels from other sources such as biomass and derivatives of coal and natural gas.",
-                 u"coal and natural gas.",
-                 u"n/a not available.",
-                 u"Note: Annual changes and shares of total are calculated using million tonnes per annum figures.",
-                 #
-                 u"Oil: Consumption *",
-                 u"* Includes crude oil, shale oil, oil sands and NGLs (the liquid content of natural gas where this is recovered separately).",
-                 u"* Inland demand plus international aviation and marine bunkers and refinery fuel and loss.  Consumption of fuel ethanol and biodiesel is also included.",
-                 u"* Includes crude oil, tight oil, oil sands and NGLs (the liquid content of natural gas where this is recovered separately). Excludes liquid fuels from other sources such as biomass and derivatives of",
-                 u"* Inland demand plus international aviation and marine bunkers and refinery fuel and loss. Consumption of biogasoline (such as ethanol), biodiesel and derivatives of coal and natural gas are also included.",
-                 u"Notes: Differences between these world consumption figures and world production statistics are accounted for by stock changes, consumption of non-petroleum additives",
-                 u"* Excludes gas flared or recycled. Includes natural gas produced for Gas-to-Liquids transformation.",
-                 u"Notes:  As far as possible, the data above represent standard cubic metres (measured at 15ºC and 1013 mbar); as they are derived directly from tonnes of oil equivalent using an average conversion factor,",
-                 u"Notes: Annual changes and shares of total are calculated using million tonnes of oil equivalent figures.",
-                 u"Notes: As the data above are derived from tonnes oil equivalent using average conversion factors, they do not necessarily equate with gas volumes expressed in specific national terms.",
-                 u"Annual changes and shares of total are calculated using million tonnes of oil equivalent figures.",
-                 u"*Excludes gas flared or recycled. Includes natural gas produced for Gas-to-Liquids transformation.",
-                 u"Natural Gas: Consumption*",
-                 u"* Excludes natural gas converted to liquid fuels but includes derivatives of coal as well as natural gas consumed in Gas-to-Liquids transformation.",
-                 u"Notes: As far as possible, the data above represent standard cubic metres (measured at 15oC and 1013 mbar); as they are derived directly from tonnes",
-                 u"Notes: The difference between these world consumption figures and the world production statistics is due to variations in stocks at storage facilities",
-                 u"* Commercial solid fuels only, i.e. bituminous coal and anthracite (hard coal), and lignite and brown (sub-bituminous) coal, and other solid commercial solid fuels. Includes coal produced for Coal-to-Liquids and Coal-to-Gas transformations.",
-                 u"^ Less than 0.5.",
-                 u"Notes:  Annual changes and shares of total are calculated using million tonnes per annum figures.",
-                 u"Differences between these world consumption figures and world production statistics are accounted for by stock changes, consumption of non-petroleum additives",
-                 u"and substitute fuels, and unavoidable disparities in the definition, measurement or conversion of oil supply and demand data.",
-                 u"Note: Differences between these world consumption figures and world production statistics are accounted for by stock changes, consumption of non-petroleum additives",
-                 #
-                 u"Natural Gas: Production *",
-                 u"* Excluding gas flared or recyled.",
-                 u"Notes:  As far as possible, the data above represent standard cubic metres measured at 15oC and 1013 millibar (mbar); as they are derived directly from tonnes",
-u"Note: Annual changes and shares of total are calculated using million tonnes of oil equivalent figures.",
-                 u"* Commercial solid fuels only, i.e. bituminous coal and anthracite (hard coal), and lignite and brown (sub-bituminous) coal and other commercial solid fuels. Includes coal produced for Coal-to-Liquids and Coal-to-Gas transformations.",
-                 u"* Commercial solid fuels only, i.e. bituminous coal and anthracite (hard coal), and lignite and brown (sub-bituminous) coal. Excludes coal converted to liquid or gaseous fuels, but includes coal consumed in transformation processes.",
-                 u"""Note:  Differences between these world consumption figures and the world production statistics are accounted for by stock changes, and unavoidable disparities in the definition, measurement
-or conversion of coal supply and demand data.""",
-                 u"Note: Annual changes and shares of total are calculated using million tonnes of oil equivalent figures.",
-                 u"* Based on gross generation and not accounting for cross-border electricity supply. Converted on the basis of thermal equivalence assuming 38% conversion efficiency in a modern thermal power station.",
-                 u"Note: Annual changes and shares of total are calculated using million tonnes of oil equivalent figures.",
-                 u"Renewables: Consumption *",
-                 u"* Based on gross generation from renewable sources including wind,geothermal,solar,biomass and waste, and not accounting for cross-border electricity supply.",
-                 u"Renewables: Consumption *",
-                 u"* Based on gross generation from renewable sources including wind,geothermal,solar,biomass and waste, and not accounting for cross-border electricity supply.",
-                 u"* Based on gross generation and not accounting for cross-border electricity supply. Converted on the",
-                 u"basis of thermal equivalence assuming 38% conversion efficiency in a modern thermal power station.",
-                 u"of oil equivalent using an average conversion factor, they do not necessarily equate with gas volumes expressed in specific national terms.",
-                 u"Notes: Annual changes and shares of total are calculated in million tonnes of oil equilevent figures.",
-                 u"As the data above are derived from tonnes oil equivalent using average conversion factors,",
-                 u"they do not necessarily equate with gas volumes expressed in specific national terms.",
-                 u"w Less than 0.05%",
-                 #
-                 u"Natural Gas: Consumption",
-                 u"Oil: Production*",
-                 u"CIS",
-                 u"* Includes crude oil, shale oil, oil sands and NGLs (natural gas liquids - the liquid content of natural gas where this is recovered separately).",
-                 u"Excludes liquid fuels from other sources such as biomass and derivatives of coal and natural gas.",
-                 u"# Excludes Estonia, Latvia and Lithuania prior to 1985 and Slovenia prior to 1990.",
-                 u"Notes: Annual changes and shares of total are calculated using million tonnes of oil equilevent figures.",
-                 u"As far as possible, the data above represent standard cubic metres (measured at 15oC and 1013 mbar); as they are derived directly from tonnes",
-                 #
-                 u"Natural Gas: Consumption",
-                 u"Oil: Consumption*",
-                 #u"Billion cubic feet",
-                 u"Natural Gas: Production*",
-                 u"Note: As far as possible, the data above represent standard cubic metres (measured at 15oC and 1013 mbar); as they are derived directly from tonnes",
-                 u"The difference between these world consumption figures and the world production statistics is due to variations in stocks at storage facilities",
-                 u"and liquefaction plants, together with unavoidable disparities in the definition, measurement or conversion of gas supply and demand data.",
-                 u"Note: The difference between these world consumption figures and the world production statistics is due to variations in stocks at storage facilities",
-                 #
-                 u"Coal: Production *",
-                 u"* Commercial solid fuels only, i.e. bituminous coal and anthracite (hard coal), and lignite and brown (sub-bituminous) coal.",
-                 u"Notes: Annual changes and shares of total are based on data expressed in tonnes oil equivalent.",
-                 #
-                 u"Coal: Consumption *",
-                 #
-                 u"Nuclear: Consumption *",
-                 u"* Based on gross generation and not accounting for cross-border electricity supply.",
-                 u"Converted on the basis of thermal equivalence assuming 38% conversion efficiency in a modern thermal power station.",
-                 #
-                 u"Hydroelectricity: Consumption *",
-                 u"* Based on gross primary hydroelectric generation and not accounting for cross-border electricity supply.",
-                 u"* Based on gross primary hydroelectric generation and not accounting for cross-border electricity supply.  Converted on the basis of thermal equivalence assuming 38%",                 
-                 u"conversion efficiency in a modern thermal power station.",
-                 #
-                 u"Other renewables: Consumption *",
-                 u"* Based on gross generation from renewable sources including wind,geothermal,solar,biomass and waste, and not accounting for cross border electricity supply.",
-                 u"Converted on the basis of thermal equivalence assuming 38% conversion efficiency in a modern thermal power station.",
-                 u"^ Less than 0.05",
-                 u"♦ Less than 0.05%", # TODO:  This string doesn't match                
-                 u"# Excludes Slovenia prior to 1991",
-                 #
-                 u"Renewables: Consumption - Solar *",
-                 u"Other North America",
-                 u"♦ Less than 0.05%.", # TODO:  This string doesn't match
-                 #
-                 u"Renewables: Consumption - Wind *",
-                 u"Coal: Production*",
-                 u"* Commercial solid fuels only, i.e. bituminous coal and anthracite (hard coal), and lignite and brown (sub-bituminous) coal, and other commercial solid fuels. Includes coal produced for Coal-to-Liquids and Coal-to-Gas transformations.",
-                 u"Renewables: Consumption  - Solar*",
-                 u"Renewables: Consumption  - Wind*",
-                 u"Nuclear: Consumption*",
-                 u"Coal: Consumption*",
-                 u"* Commercial solid fuels only, i.e. bituminous coal and anthracite (hard coal), and lignite and brown (sub-bituminous) coal, and other commercial solid fuels.",
-                 u"Excludes coal converted to liquid or gaseous fuels, but includes coal consumed in transformation processes.",
-                 u"Hydroelectricity: Consumption*",
-                 u"* Based on gross primary hydroelectric generation and not accounting for cross-border electricity supply. Converted on the",
-                 u"Renewables: Consumption*",
-                  u"* Based on gross generation from renewable sources including wind, geothermal, solar, biomass and waste, and not accounting for cross-border electricity supply.",
-                 u"Renewables: Consumption - Solar*",
-                 u"Renewables: Consumption - Wind*",
-                 u"Natural Gas: Consumption in billion cubic metres*",
-                 ]
+
+    import ignore_me as ign_me
+    ignore_me = ign_me.ignore_me
 
     for r in rowrange:
         BP_country_code = sheet.cell(row=r,column=1+0).value
+        if r == 2:
+            BP_country_code = 'YEAR'
+        
         if BP_country_code == None:
             continue
         # NOTE:  Remove pound sterling sign (u'\xa3') from 'Non-OPEC'
@@ -266,7 +151,7 @@ def main():
         #'Primary Energy Consumption',
         #'Primary Energy - Cons by fuel',
         #'Oil - Proved reserves',
-        #'Oil - Proved reserves history',
+        'Oil - Proved reserves history' : 'BP_2017_oil_history_gb',
         'Oil Production - Barrels' : "BP_2017_oil_production_bbl",
         'Oil Production - Tonnes' : "BP_2017_oil_production_mtoe",
         'Oil Consumption -  Barrels': "BP_2017_oil_consumption_bbl",
@@ -312,7 +197,7 @@ def main():
         # 'Biofuels Production - Kboed',
         # 'Biofuels Production - Ktoe',
         # 'Electricity Generation ',
-        # 'Carbon Dioxide Emissions',
+        'Carbon Dioxide Emissions' : 'BP_2017_co2_emissions',
         # 'Geothermal capacity',
         # 'Solar capacity',
         # 'Wind capacity',
@@ -343,15 +228,16 @@ def main():
 
         # Determine rows and columns to read
         data_start_year = sheet.cell(row=1+2,column=1+1).value
+        print "data_start_year = %s" % (str(data_start_year))
         col_hi = RELEASE_YEAR - data_start_year + 1
         colrange = range(1+1,col_hi+1)
         rowrange = range(1,100) # Rowrange is larger than needed and rows that don't have country names will be skipped
 
         print ("Converting %s (%s)" % (title,units)).ljust(85),
-        #file_name = file_name.replace("_2017_", "_")
-        #file_name = file_name.replace("_renewables_", "_other_renewables_")
+        # file_name = file_name.replace("_2017_", "_")
+        # file_name = file_name.replace("_renewables_", "_other_renewables_")
         print "=> %s ..." % (file_name)
-        file = open(file_name,'w')
+        file = open("./" + file_name,'w')
         file.write("title         = ASCII CSV version of worksheet \"%s\" from the 2017 British Petroleum Statistical Review\n" % (title))
         file.write("file URL      = http://mazamascience.com/Data/Energy/BP/2017/%s\n" % (file_name))
         file.write("original data = http://www.bp.com/content/dam/bp/en/corporate/excel/energy-economics/statistical-review-2017/bp-statistical-review-of-world-energy-2017-underpinning-data.xlsx\n")
