@@ -136,6 +136,7 @@ def main():
         workbook = load_workbook(filename=stat_review)
     except:
         print("*** Open failed: %s: %s" % (sys.exc_info()[:2]))
+        sys.exit(1)
 
     print("Successfully opened workbook.")
 
@@ -189,7 +190,7 @@ def main():
         'Geo Biomass Other - Mtoe' : "BP_2017_geo_biomass_other_mtoe",
         # 'Biofuels Production - Kboed',
         # 'Biofuels Production - Ktoe',
-        # 'Electricity Generation ',
+        'Electricity Generation ' : "BP_" + str(RELEASE_YEAR) + "_electricity_generation_twh",
         'Carbon Dioxide Emissions' : 'BP_2017_co2_emissions_mt',
         # 'Geothermal capacity',
         # 'Solar capacity',
