@@ -175,7 +175,7 @@ def main():
 
     #sheet_indices = [sheet_indices[8]]
     for title in title_to_filename.keys():
-        print "doing %s" % (title)
+        #print "doing %s" % (title)
         file_name = title_to_filename[title] + ".csv"
         sheet = title_to_worksheet[title]
         sheet_title = sheet.cell(row=1+0,column=1+0).value.replace('*','').rstrip()
