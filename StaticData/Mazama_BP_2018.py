@@ -148,7 +148,7 @@ def main():
         'Oil - Proved reserves history' : 'BP_' + str(RELEASE_YEAR) + '_oil_proved_reserves_gb',
         'Oil Production - Barrels' : "BP_' + str(RELEASE_YEAR) + '_oil_production_bbl",
         'Oil Production - Tonnes' : "BP_' + str(RELEASE_YEAR) + '_oil_production_mtoe",
-        'Oil Consumption -  Barrels': "BP_' + str(RELEASE_YEAR) + '_oil_consumption_bbl",
+        'Oil Consumption - Barrels': "BP_' + str(RELEASE_YEAR) + '_oil_consumption_bbl",
         'Oil Consumption - Tonnes': "BP_' + str(RELEASE_YEAR) + '_oil_consumption_mtoe",
         #'Oil - Regional Consumption ',
         #'Oil - Spot crude prices',
@@ -175,7 +175,7 @@ def main():
         # 'Coal - Prices',
         'Coal Production - Tonnes' : "BP_' + str(RELEASE_YEAR) + '_coal_production_ton",
         'Coal Production - Mtoe' : "BP_' + str(RELEASE_YEAR) + '_coal_production_mtoe",
-        'Coal Consumption -  Mtoe' : "BP_' + str(RELEASE_YEAR) + '_coal_consumption_mtoe",
+        'Coal Consumption - Mtoe' : "BP_' + str(RELEASE_YEAR) + '_coal_consumption_mtoe",
         'Nuclear Consumption - TWh' : "BP_' + str(RELEASE_YEAR) + '_nuclear_consumption_twh",
         'Nuclear Consumption - Mtoe' : "BP_' + str(RELEASE_YEAR) + '_nuclear_consumption_mtoe",
         'Hydro Consumption - TWh' : "BP_' + str(RELEASE_YEAR) + '_hydro_consumption_twh",
@@ -210,6 +210,13 @@ def main():
             elems.sort()
             pprint.pprint(elems)
             print "missing worksheet >%s<" % title
+            for candidate in elems:
+                found = True
+                for part in title.split(" "):
+                    if part not in candidate:
+                        found = False
+                if found:
+                    print "Did you mean >%s< ?" % (candidate)
             sys.exit(1)
 
     import collections
