@@ -174,4 +174,5 @@ or conversion of coal supply and demand data.""",
              u"Renewables: Generation- Wind*",
              u"As far as possible, the data above represents standard cubic metres (measured at 15ºC and 1013 mbar) and has been standardized using a Gross Calorific Value (GCV) of 40 MJ/m3.",
              u"USSR includes Georgia and the Baltic States.",
+             u"European Union",
              ]
