@@ -159,4 +159,6 @@ or conversion of coal supply and demand data.""",
              u"Renewables: Consumption - Solar*",
              u"Renewables: Consumption - Wind*",
              u"Natural Gas: Consumption in billion cubic metres*",
+             u"Renewables: Consumption - Geothermal, Biomass and Other*",
+             u"# Excludes Estonia, Latvia and Lithuania prior to 1985 and Croatia and Slovenia prior to 1990.",
              ]

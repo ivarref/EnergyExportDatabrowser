@@ -20,9 +20,12 @@ import collections
 RELEASE_YEAR = 2018
 CSV_START_YEAR = 1965
 
+seen_errors = []
+
 # Returns a data dictionary filled with the contents of a BP Stat Review data sheet.
 def get_data_dictionary(sheet,rowrange,colrange):
     result = {}
+    global seen_errors
 
     ct = CountryTranslator('BP_2015')
     import ignore_me as ign_me
@@ -79,7 +82,9 @@ def get_data_dictionary(sheet,rowrange,colrange):
             ###error_text = "ERROR in get_data_dictionary:  BP_country_code = \n\t%s\nerror = \n\t%s" % (BP_country_code,e)
             ###error_text = "ERROR: %s\nu\"%s\"," % (e, BP_country_code)
             error_text = "                 u\"%s\"," % (BP_country_code)
-            print(error_text)
+            if not BP_country_code in seen_errors:
+                seen_errors.append(BP_country_code)
+                print(error_text)
             ###exit(1)
 
             pass
