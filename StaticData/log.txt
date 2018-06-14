@@ -1,0 +1,16 @@
+Loading BP_2018.xlsx ...
+Successfully opened workbook.
+Verifying expected worksheets is present ...
+                 u"Central America",
+                 u"Other Caribbean",
+                 u"Other South America",
+                 u"Other Europe",
+                 u"Other CIS",
+                 u"Total CIS",
+                 u"Eastern Africa",
+                 u"Middle Africa",
+                 u"Western Africa",
+                 u"Other Northern Africa",
+                 u"Other Southern Africa",
+                 u"Other North Africa",
+                 u"European Union",

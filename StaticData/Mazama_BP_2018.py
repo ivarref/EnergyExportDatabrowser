@@ -145,64 +145,11 @@ def main():
 
     print("Successfully opened workbook.")
 
-    title_to_filename = {
-        #'Contents',
-        #'Primary Energy Consumption',
-        #'Primary Energy - Cons by fuel',
-        #'Oil - Proved reserves',
-        'Oil - Proved reserves history' : 'BP_' + str(RELEASE_YEAR) + '_oil_proved_reserves_gb',
-        'Oil Production - Barrels' : "BP_' + str(RELEASE_YEAR) + '_oil_production_bbl",
-        'Oil Production - Tonnes' : "BP_' + str(RELEASE_YEAR) + '_oil_production_mtoe",
-        'Oil Consumption - Barrels': "BP_' + str(RELEASE_YEAR) + '_oil_consumption_bbl",
-        'Oil Consumption - Tonnes': "BP_' + str(RELEASE_YEAR) + '_oil_consumption_mtoe",
-        #'Oil - Regional Consumption ',
-        #'Oil - Spot crude prices',
-        #'Oil - Crude prices since 1861',
-        #'Oil - Refinery throughput',
-        #'Oil - Refinery capacities',
-        #'Oil - Regional refining margins',
-        #'Oil - Trade movements',
-        #'Oil - Inter-area movements ',
-        #'Oil - Trade 2015 - 2016',
-        #'Gas - Proved reserves',
-        'Gas - Proved reserves history ' : 'BP_' + str(RELEASE_YEAR) + '_gas_proved_reserves_trillion_cubic_metres',
-        'Gas Production - Bcm' : "BP_' + str(RELEASE_YEAR) + '_gas_production_m3",
-        'Gas Production - Bcf' : "BP_' + str(RELEASE_YEAR) + '_gas_production_ft3",
-        'Gas Production - Mtoe' : "BP_' + str(RELEASE_YEAR) + '_gas_production_mtoe",
-        'Gas Consumption - Bcm' : "BP_' + str(RELEASE_YEAR) + '_gas_consumption_m3",
-        'Gas Consumption - Bcf' : "BP_' + str(RELEASE_YEAR) + '_gas_consumption_ft3",
-        'Gas Consumption - Mtoe' : "BP_' + str(RELEASE_YEAR) + '_gas_consumption_mtoe",
-        # 'Gas - Trade - pipeline',
-        # 'Gas - Trade movements LNG',
-        # 'Gas - Trade 2015-2016',
-        # 'Gas - Prices ',
-        # 'Coal - Reserves',
-        # 'Coal - Prices',
-        'Coal Production - Tonnes' : "BP_' + str(RELEASE_YEAR) + '_coal_production_ton",
-        'Coal Production - Mtoe' : "BP_' + str(RELEASE_YEAR) + '_coal_production_mtoe",
-        'Coal Consumption - Mtoe' : "BP_' + str(RELEASE_YEAR) + '_coal_consumption_mtoe",
-        'Nuclear Consumption - TWh' : "BP_' + str(RELEASE_YEAR) + '_nuclear_consumption_twh",
-        'Nuclear Consumption - Mtoe' : "BP_' + str(RELEASE_YEAR) + '_nuclear_consumption_mtoe",
-        'Hydro Consumption - TWh' : "BP_' + str(RELEASE_YEAR) + '_hydro_consumption_twh",
-        'Hydro Consumption - Mtoe': "BP_' + str(RELEASE_YEAR) + '_hydro_consumption_mtoe",
-        'Other renewables - TWh' : "BP_' + str(RELEASE_YEAR) + '_renewables_consumption_twh",
-        'Other renewables - Mtoe' : "BP_' + str(RELEASE_YEAR) + '_renewables_consumption_mtoe",
-        'Solar Consumption - TWh' : "BP_' + str(RELEASE_YEAR) + '_solar_consumption_twh",
-        'Solar Consumption - Mtoe': "BP_' + str(RELEASE_YEAR) + '_solar_consumption_mtoe",
-        'Wind Consumption - TWh ': "BP_' + str(RELEASE_YEAR) + '_wind_consumption_twh",
-        'Wind Consumption - Mtoe': "BP_' + str(RELEASE_YEAR) + '_wind_consumption_mtoe",
-        'Geo Biomass Other - TWh' : "BP_' + str(RELEASE_YEAR) + '_geo_biomass_other_twh",
-        'Geo Biomass Other - Mtoe' : "BP_' + str(RELEASE_YEAR) + '_geo_biomass_other_mtoe",
-        # 'Biofuels Production - Kboed',
-        # 'Biofuels Production - Ktoe',
-        'Electricity Generation ' : "BP_" + str(RELEASE_YEAR) + "_electricity_generation_twh",
-        'Carbon Dioxide Emissions' : 'BP_' + str(RELEASE_YEAR) + '_co2_emissions_mt',
-        # 'Geothermal capacity',
-        # 'Solar capacity',
-        # 'Wind capacity',
-        # 'Approximate conversion factors',
-        # 'Definitions'
-    }
+    def fname(postfix):
+        return "BP_" + str(RELEASE_YEAR) + "_" + postfix
+
+    import title_to_filename as t2f
+    title_to_filename = dict([(k, fname(v)) for (k,v) in t2f.title_to_filename.items()])
 
     print "Verifying expected worksheets is present ..."
     title_to_worksheet = dict([(sheet.title, sheet) for sheet in workbook.worksheets])
@@ -228,6 +175,7 @@ def main():
 
     #sheet_indices = [sheet_indices[8]]
     for title in title_to_filename.keys():
+        print "doing %s" % (title)
         file_name = title_to_filename[title] + ".csv"
         sheet = title_to_worksheet[title]
         sheet_title = sheet.cell(row=1+0,column=1+0).value.replace('*','').rstrip()
