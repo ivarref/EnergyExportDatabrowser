@@ -140,6 +140,7 @@ English_to_ISO = {
     "LUXEMBOURG" : "LU",
     "MACAO" : "MO",
     "MACEDONIA, THE FORMER YUGOSLAV REPUBLIC OF" : "MK",
+    "MACEDONIA" : "MK",
     "MADAGASCAR" : "MG",
     "MALAWI" : "MW",
     "MALAYSIA" : "MY",
