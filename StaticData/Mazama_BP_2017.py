@@ -128,7 +128,7 @@ def write_data_as_csv(filename, Data, rowrange, rounding, data_start_year=1965):
 #
 def main():
 
-    stat_review = 'BP_2017.xlsx'
+    stat_review = 'BP_' + str(RELEASE_YEAR) + '.xlsx'
 
     print("Loading %s ..." % (stat_review))
 
@@ -145,11 +145,11 @@ def main():
         #'Primary Energy Consumption',
         #'Primary Energy - Cons by fuel',
         #'Oil - Proved reserves',
-        'Oil - Proved reserves history' : 'BP_2017_oil_proved_reserves_gb',
-        'Oil Production - Barrels' : "BP_2017_oil_production_bbl",
-        'Oil Production - Tonnes' : "BP_2017_oil_production_mtoe",
-        'Oil Consumption -  Barrels': "BP_2017_oil_consumption_bbl",
-        'Oil Consumption - Tonnes': "BP_2017_oil_consumption_mtoe",
+        'Oil - Proved reserves history' : 'BP_' + str(RELEASE_YEAR) + '_oil_proved_reserves_gb',
+        'Oil Production - Barrels' : "BP_' + str(RELEASE_YEAR) + '_oil_production_bbl",
+        'Oil Production - Tonnes' : "BP_' + str(RELEASE_YEAR) + '_oil_production_mtoe",
+        'Oil Consumption -  Barrels': "BP_' + str(RELEASE_YEAR) + '_oil_consumption_bbl",
+        'Oil Consumption - Tonnes': "BP_' + str(RELEASE_YEAR) + '_oil_consumption_mtoe",
         #'Oil - Regional Consumption ',
         #'Oil - Spot crude prices',
         #'Oil - Crude prices since 1861',
@@ -160,38 +160,38 @@ def main():
         #'Oil - Inter-area movements ',
         #'Oil - Trade 2015 - 2016',
         #'Gas - Proved reserves',
-        'Gas - Proved reserves history ' : 'BP_2017_gas_proved_reserves_trillion_cubic_metres',
-        'Gas Production - Bcm' : "BP_2017_gas_production_m3",
-        'Gas Production - Bcf' : "BP_2017_gas_production_ft3",
-        'Gas Production - Mtoe' : "BP_2017_gas_production_mtoe",
-        'Gas Consumption - Bcm' : "BP_2017_gas_consumption_m3",
-        'Gas Consumption - Bcf' : "BP_2017_gas_consumption_ft3",
-        'Gas Consumption - Mtoe' : "BP_2017_gas_consumption_mtoe",
+        'Gas - Proved reserves history ' : 'BP_' + str(RELEASE_YEAR) + '_gas_proved_reserves_trillion_cubic_metres',
+        'Gas Production - Bcm' : "BP_' + str(RELEASE_YEAR) + '_gas_production_m3",
+        'Gas Production - Bcf' : "BP_' + str(RELEASE_YEAR) + '_gas_production_ft3",
+        'Gas Production - Mtoe' : "BP_' + str(RELEASE_YEAR) + '_gas_production_mtoe",
+        'Gas Consumption - Bcm' : "BP_' + str(RELEASE_YEAR) + '_gas_consumption_m3",
+        'Gas Consumption - Bcf' : "BP_' + str(RELEASE_YEAR) + '_gas_consumption_ft3",
+        'Gas Consumption - Mtoe' : "BP_' + str(RELEASE_YEAR) + '_gas_consumption_mtoe",
         # 'Gas - Trade - pipeline',
         # 'Gas - Trade movements LNG',
         # 'Gas - Trade 2015-2016',
         # 'Gas - Prices ',
         # 'Coal - Reserves',
         # 'Coal - Prices',
-        'Coal Production - Tonnes' : "BP_2017_coal_production_ton",
-        'Coal Production - Mtoe' : "BP_2017_coal_production_mtoe",
-        'Coal Consumption -  Mtoe' : "BP_2017_coal_consumption_mtoe",
-        'Nuclear Consumption - TWh' : "BP_2017_nuclear_consumption_twh",
-        'Nuclear Consumption - Mtoe' : "BP_2017_nuclear_consumption_mtoe",
-        'Hydro Consumption - TWh' : "BP_2017_hydro_consumption_twh",
-        'Hydro Consumption - Mtoe': "BP_2017_hydro_consumption_mtoe",
-        'Other renewables -TWh' : "BP_2017_renewables_consumption_twh",
-        'Other renewables - Mtoe' : "BP_2017_renewables_consumption_mtoe",
-        'Solar Consumption - TWh' : "BP_2017_solar_consumption_twh",
-        'Solar Consumption - Mtoe': "BP_2017_solar_consumption_mtoe",
-        'Wind Consumption - TWh ': "BP_2017_wind_consumption_twh",
-        'Wind Consumption - Mtoe': "BP_2017_wind_consumption_mtoe",
-        'Geo Biomass Other - TWh' : "BP_2017_geo_biomass_other_twh",
-        'Geo Biomass Other - Mtoe' : "BP_2017_geo_biomass_other_mtoe",
+        'Coal Production - Tonnes' : "BP_' + str(RELEASE_YEAR) + '_coal_production_ton",
+        'Coal Production - Mtoe' : "BP_' + str(RELEASE_YEAR) + '_coal_production_mtoe",
+        'Coal Consumption -  Mtoe' : "BP_' + str(RELEASE_YEAR) + '_coal_consumption_mtoe",
+        'Nuclear Consumption - TWh' : "BP_' + str(RELEASE_YEAR) + '_nuclear_consumption_twh",
+        'Nuclear Consumption - Mtoe' : "BP_' + str(RELEASE_YEAR) + '_nuclear_consumption_mtoe",
+        'Hydro Consumption - TWh' : "BP_' + str(RELEASE_YEAR) + '_hydro_consumption_twh",
+        'Hydro Consumption - Mtoe': "BP_' + str(RELEASE_YEAR) + '_hydro_consumption_mtoe",
+        'Other renewables -TWh' : "BP_' + str(RELEASE_YEAR) + '_renewables_consumption_twh",
+        'Other renewables - Mtoe' : "BP_' + str(RELEASE_YEAR) + '_renewables_consumption_mtoe",
+        'Solar Consumption - TWh' : "BP_' + str(RELEASE_YEAR) + '_solar_consumption_twh",
+        'Solar Consumption - Mtoe': "BP_' + str(RELEASE_YEAR) + '_solar_consumption_mtoe",
+        'Wind Consumption - TWh ': "BP_' + str(RELEASE_YEAR) + '_wind_consumption_twh",
+        'Wind Consumption - Mtoe': "BP_' + str(RELEASE_YEAR) + '_wind_consumption_mtoe",
+        'Geo Biomass Other - TWh' : "BP_' + str(RELEASE_YEAR) + '_geo_biomass_other_twh",
+        'Geo Biomass Other - Mtoe' : "BP_' + str(RELEASE_YEAR) + '_geo_biomass_other_mtoe",
         # 'Biofuels Production - Kboed',
         # 'Biofuels Production - Ktoe',
         'Electricity Generation ' : "BP_" + str(RELEASE_YEAR) + "_electricity_generation_twh",
-        'Carbon Dioxide Emissions' : 'BP_2017_co2_emissions_mt',
+        'Carbon Dioxide Emissions' : 'BP_' + str(RELEASE_YEAR) + '_co2_emissions_mt',
         # 'Geothermal capacity',
         # 'Solar capacity',
         # 'Wind capacity',
@@ -229,13 +229,13 @@ def main():
         rowrange = range(1,100) # Rowrange is larger than needed and rows that don't have country names will be skipped
 
         #print ("Converting %s (%s)" % (title,units)).ljust(85),
-        # file_name = file_name.replace("_2017_", "_")
+        # file_name = file_name.replace("_' + str(RELEASE_YEAR) + '_", "_")
         # file_name = file_name.replace("_renewables_", "_other_renewables_")
         #print "=> %s ..." % (file_name)
         file = open("./" + file_name,'w')
-        file.write("title         = ASCII CSV version of worksheet \"%s\" from the 2017 British Petroleum Statistical Review\n" % (title))
-        file.write("file URL      = http://mazamascience.com/Data/Energy/BP/2017/%s\n" % (file_name))
-        file.write("original data = http://www.bp.com/content/dam/bp/en/corporate/excel/energy-economics/statistical-review-2017/bp-statistical-review-of-world-energy-2017-underpinning-data.xlsx\n")
+        file.write(("title         = ASCII CSV version of worksheet \"%s\" from the " + str(RELEASE_YEAR) + " British Petroleum Statistical Review\n") % (title))
+        file.write(("file URL      = http://mazamascience.com/Data/Energy/BP/" + str(RELEASE_YEAR) + "/%s\n") % (file_name))
+        file.write("original data = http://www.bp.com/content/dam/bp/en/corporate/excel/energy-economics/statistical-review-" + str(RELEASE_YEAR) + "/bp-statistical-review-of-world-energy-" + str(RELEASE_YEAR) + "-underpinning-data.xlsx\n")
         file.write("country codes = ISO3166-1 two-letter codes or 'BP_~~~' for non-standard BP groupings (e.g. BP_TNA = Total North America)\n")
         file.write("units         = %s\n" % (units))
         file.write("\n")
