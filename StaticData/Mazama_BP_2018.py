@@ -201,6 +201,19 @@ def main():
         file.write("country codes = ISO3166-1 two-letter codes or 'BP_~~~' for non-standard BP groupings (e.g. BP_TNA = Total North America)\n")
         file.write("units         = %s\n" % (units))
         file.write("\n")
+        BP_DIAGRAMS_FILES = ['co2_emissions',
+                             'coal_consumption_mtoe',
+                             'coal_production_mtoe',
+                             'gas_consumption_mtoe',
+                             'gas_production_mtoe',
+                             'hydro_consumption_mtoe',
+                             'nuclear_consumption_mtoe',
+                             'oil_consumption_mtoe',
+                             'oil_production_mtoe',
+                             'renewables_consumption_mtoe',
+                             'solar_consumption_mtoe',
+                             'wind_consumption_mtoe']
+        #BP_DIAGRAMS_TRANSLATE = {'renewables_consumption_mtoe' }
         Data = get_data_dictionary(sheet,rowrange,colrange)
         rowrange = range(0,col_hi-1)
         rounding = 3
@@ -210,6 +223,12 @@ def main():
         file = open('./' + str(RELEASE_YEAR) + '/' + file_name, 'w')
         write_data_as_csv(file,Data,rowrange,rounding,data_start_year)
         file.close()
+        for candidate_file in BP_DIAGRAMS_FILES:
+          if candidate_file in file_name:
+            dest_file = "../../bp-diagrams/data/" + file_name.replace(("_" + str (RELEASE_YEAR) + ""), '').replace("BP_renewables_consumption_mtoe", "BP_other_renewables_consumption_mtoe")
+            print "copying file %s to %s" % (file_name, dest_file)
+            import shutil
+            shutil.copy(file_name, dest_file)
 
 ################################################################################
 
