@@ -188,7 +188,7 @@ def main():
         #print "data_start_year = %s" % (str(data_start_year))
         col_hi = RELEASE_YEAR - data_start_year + 1
         colrange = range(1+1,col_hi+1)
-        rowrange = range(1,100) # Rowrange is larger than needed and rows that don't have country names will be skipped
+        rowrange = range(1,1000) # Rowrange is larger than needed and rows that don't have country names will be skipped
 
         #print ("Converting %s (%s)" % (title,units)).ljust(85),
         # file_name = file_name.replace("_' + str(RELEASE_YEAR) + '_", "_")
@@ -226,7 +226,7 @@ def main():
         for candidate_file in BP_DIAGRAMS_FILES:
           if candidate_file in file_name:
             dest_file = "../../bp-diagrams/data/" + file_name.replace(("_" + str (RELEASE_YEAR) + ""), '').replace("BP_renewables_consumption_mtoe", "BP_other_renewables_consumption_mtoe").replace("BP_co2_emissions_mt", "BP_co2_emissions")
-            print "copying file %s to %s" % (file_name, dest_file)
+            #print "copying file %s to %s" % (file_name, dest_file)
             import shutil
             shutil.copy(file_name, dest_file)
 
