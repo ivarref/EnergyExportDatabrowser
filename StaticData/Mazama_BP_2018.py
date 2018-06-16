@@ -225,7 +225,7 @@ def main():
         file.close()
         for candidate_file in BP_DIAGRAMS_FILES:
           if candidate_file in file_name:
-            dest_file = "../../bp-diagrams/data/" + file_name.replace(("_" + str (RELEASE_YEAR) + ""), '').replace("BP_renewables_consumption_mtoe", "BP_other_renewables_consumption_mtoe")
+            dest_file = "../../bp-diagrams/data/" + file_name.replace(("_" + str (RELEASE_YEAR) + ""), '').replace("BP_renewables_consumption_mtoe", "BP_other_renewables_consumption_mtoe").replace("BP_co2_emissions_mt", "BP_co2_emissions")
             print "copying file %s to %s" % (file_name, dest_file)
             import shutil
             shutil.copy(file_name, dest_file)
